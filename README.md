@@ -42,6 +42,8 @@ node uninstall
 
 This would drop the database of the application. Once that is completed you could simply delete this directory.
 
+---
+
 ## SQL queries used
 
 Creating the database:
@@ -127,11 +129,11 @@ Inserting data into the table:
     INSERT INTO Member VALUES('1000004', 'Agatha Thompson', 44, 'F', '7782210098', 'AgathaT@gmail.com', 'C');
     INSERT INTO Member VALUES('1000005', 'Wayne Bruce', 33, 'M', '7788780099', 'WayneBruce@gmail.com', 'C');
     
-    INSERT INTO Purchase VALUES('10001', '1000004', '04/28/2020', 120);
-    INSERT INTO Purchase VALUES('10002', '1000002', '05/02/2020', 250);
-    INSERT INTO Purchase VALUES('10003', '1000001', '05/11/2020', 5);
-    INSERT INTO Purchase VALUES('10004', '1000004', '05/13/2020', 3);
-    INSERT INTO Purchase VALUES('10005', '1000003', '05/17/2020', 200);
+    INSERT INTO Purchase VALUES('10001', '1000004', '2020-04-28', 120);
+    INSERT INTO Purchase VALUES('10002', '1000002', '2020-05-02', 250);
+    INSERT INTO Purchase VALUES('10003', '1000001', '2020-05-11', 5);
+    INSERT INTO Purchase VALUES('10004', '1000004', '2020-05-13', 3);
+    INSERT INTO Purchase VALUES('10005', '1000003', '2020-05-17', 200);
     
     INSERT INTO Instructor VALUES('A32', 'Luke Skywalker', 25);
     INSERT INTO Instructor VALUES('C81', 'Ben Jamin', 19);
@@ -147,17 +149,17 @@ Inserting data into the table:
     INSERT INTO HikeLocation VALUES('Lightning Lake Loop', 0, 'paved path', 9, 2.5, 1);
     INSERT INTO HikeLocation VALUES('Abby Grind', 330, 'forest', 4, 1.5, 2);
     
-    INSERT INTO Hike VALUES('1000', '05/01/2020', 12, 3, 'Abby Grind', 'B29');
-    INSERT INTO Hike VALUES('1001', '05/03/2020', 8, 5, 'Bowen Lookout', 'A18');
-    INSERT INTO Hike VALUES('1002', '05/07/2020', 9, 6, 'Spirit Caves Trail', 'A32');
-    INSERT INTO Hike VALUES('1003', '05/10/2020', 14, 5, 'Abby Grind', 'C44');
-    INSERT INTO Hike VALUES('1004', '05/12/2020', 15, 8, 'Lightning Lake Loop', 'C81');
+    INSERT INTO Hike VALUES('1000', '2020-05-01', 12, 3, 'Abby Grind', 'B29');
+    INSERT INTO Hike VALUES('1001', '2020-05-03', 8, 5, 'Bowen Lookout', 'A18');
+    INSERT INTO Hike VALUES('1002', '2020-05-07', 9, 6, 'Spirit Caves Trail', 'A32');
+    INSERT INTO Hike VALUES('1003', '2020-05-10', 14, 5, 'Abby Grind', 'C44');
+    INSERT INTO Hike VALUES('1004', '2020-05-12', 15, 8, 'Lightning Lake Loop', 'C81');
     
-    INSERT INTO SignedUp VALUES('1000003', '1000', '04/24/2020');
-    INSERT INTO SignedUp VALUES('1000001', '1004', '05/03/2020');
-    INSERT INTO SignedUp VALUES('1000004', '1001', '04/23/2020');
-    INSERT INTO SignedUp VALUES('1000002', '1004', '04/30/2020');
-    INSERT INTO SignedUp VALUES('1000003', '1002', '05/01/2020');
+    INSERT INTO SignedUp VALUES('1000003', '1000', '2020-04-24');
+    INSERT INTO SignedUp VALUES('1000001', '1004', '2020-05-03');
+    INSERT INTO SignedUp VALUES('1000004', '1001', '2020-04-23');
+    INSERT INTO SignedUp VALUES('1000002', '1004', '2020-04-30');
+    INSERT INTO SignedUp VALUES('1000003', '1002', '2020-05-01');
     
     INSERT INTO Supervises VALUES('C81', 'A32');
     INSERT INTO Supervises VALUES('C44', 'A18');

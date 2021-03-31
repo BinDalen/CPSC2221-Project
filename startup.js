@@ -13,7 +13,7 @@ const initialize = () => {
         .then(() => process.exit(0))
         .catch(err => {
             console.log(err);
-            process.exit(0);
+            process.exit(1);
         });
 }
 
