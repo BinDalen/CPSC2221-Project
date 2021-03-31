@@ -11,7 +11,10 @@ const initialize = () => {
         .then(() => createTables.createTables())
         .then(() => populateTables.fillTables())
         .then(() => process.exit(0))
-        .catch(err => console.log(err));
+        .catch(err => {
+            console.log(err);
+            process.exit(0);
+        });
 }
 
 initialize();
