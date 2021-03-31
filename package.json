@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "mysql": "^2.18.1",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "yargs": "^16.2.0"
   }
 }
