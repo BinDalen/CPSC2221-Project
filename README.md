@@ -14,6 +14,8 @@ Any feedback would be greatly appreciated, and if there are any problems or bugs
 
 You must have node.js installed on your computer.
 
+https://nodejs.org/en/
+
 Clone the repository and run the following on the command prompt:
 
 ```
@@ -27,3 +29,15 @@ You will be prompted for information and credentials to access your local databa
 When prompted for host, if you have a MySQL server hosted locally, enter `localhost`, then enter the username and password of your server.
 
 When prompted for database name, please enter a name for a new database or the name of an empty database.
+
+---
+
+## Clearing application data and uninstalling the application
+
+In the command line, run the following:
+
+```
+node uninstall
+```
+
+This would drop the database of the application. Once that is completed you could simply delete this directory.
