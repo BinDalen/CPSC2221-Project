@@ -4,6 +4,8 @@ var projection = require("./projection.js");
 var findTable = require("./findTable.js");
 var search = require("./search.js");
 var list = require("./listParticipants.js");
+var participation = require("./hikeParticipation.js");
+var mostActive = require("./mostActive.js");
 var yargs = require("yargs");
 
 var argv = yargs.argv;
@@ -60,6 +62,22 @@ switch (command) {
     case "list":
         list.listHikes()
             .then(() => list.participants())
+            .then(data => serveHtml(data))
+            .catch(err => {
+                console.log(err);
+                process.exit(1);
+            });
+        break;
+    case "participation":
+        participation.countParticipants()
+            .then(data => serveHtml(data))
+            .catch(err => {
+                console.log(err);
+                process.exit(1);
+            });
+        break;
+    case "topMember":
+        mostActive.topMember()
             .then(data => serveHtml(data))
             .catch(err => {
                 console.log(err);
