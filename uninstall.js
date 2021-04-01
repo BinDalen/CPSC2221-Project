@@ -14,7 +14,7 @@ function dropDB() {
         if (err) return console.log("Connection to server failed...");
         
         con.query(`DROP DATABASE ${dbName}`, function(err, result) {
-            if (err) return console.log("X--> ailed to remove database...");
+            if (err) return console.log("X--> Failed to remove database...");
             else {
                 console.log("|--> Database removed!");
                 process.exit(0);

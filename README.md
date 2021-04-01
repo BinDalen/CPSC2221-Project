@@ -32,6 +32,36 @@ When prompted for database name, please enter a name for a new database or the n
 
 ---
 
+## Running the application
+
+Once the application is installed and populated, you can run different queries to manipulate the data in the newly created database.
+
+```
+node app [option]
+```
+
+You can replace option with one of the following:
+
++ display
+
++ search
+
++ update
+
++ list
+
++ participation
+
++ topMember
+
++ topWorker
+
++ allMembersJoined
+
++ cancelHike
+
+---
+
 ## Clearing application data and uninstalling the application
 
 In the command line, run the following:
@@ -166,4 +196,97 @@ Inserting data into the table:
     INSERT INTO Supervises VALUES('B29', 'A32');
     INSERT INTO Supervises VALUES('C11', 'A32');
     INSERT INTO Supervises VALUES('C88', 'B29');
+```
+
+findTable:
+
+```SQL
+DESCRIBE ${table}
+```
+
+projection:
+
+```SQL
+SELECT ${cols} FROM ${table}
+```
+
+search:
+
+```SQL
+SELECT * FROM ${table} WHERE ${field} = ${value}
+```
+
+update:
+
+```SQL
+UPDATE ${table} SET ${changeField} = ${changeKey} WHERE ${searchField} = ${searchKey}
+```
+
+list:
+
+```SQL
+SELECT M.membershipid, M.member_name
+FROM member M
+RIGHT JOIN (SELECT membershipid
+            FROM signedup
+            WHERE hikeid = ${hikeid}) H
+ON M.membershipid = H.membershipid
+```
+
+participation:
+
+```SQL
+SELECT hikeid, COUNT(*) AS participants
+FROM signedup
+GROUP BY hikeid
+```
+
+topMember:
+
+```SQL
+SELECT N.membershipid, N.member_name
+FROM member N
+RIGHT JOIN (SELECT membershipid, COUNT(*) AS CT
+            FROM signedup 
+            GROUP BY membershipid
+            HAVING CT = (SELECT MAX(SU.C) AS MX
+                        FROM (SELECT COUNT(*) AS C
+                            FROM signedup
+                            GROUP BY membershipid) SU)) T 
+ON N.membershipid = T.membershipid
+```
+
+topWorker:
+
+```SQL
+SELECT I.employeeid, I.instructor_name
+FROM instructor I
+RIGHT JOIN 
+(SELECT H.employeeid, COUNT(*)
+FROM hike H
+GROUP BY H.employeeid
+HAVING COUNT(*) = (SELECT MAX(CT)
+                    FROM (SELECT COUNT(*) AS CT
+                            FROM hike
+                            GROUP BY employeeid) C)) E
+ON I.employeeid = E.employeeid
+```
+
+allMembersJoined:
+
+```SQL
+SELECT H.hikeid
+FROM hike H
+WHERE NOT EXISTS
+((SELECT M.membershipid FROM member M)
+EXCEPT
+(SELECT SU.membershipid
+FROM signedup SU
+WHERE SU.hikeid = H.hikeid))
+```
+
+cancelHike:
+
+```SQL
+DELETE FROM hike WHERE hikeid = ${hike}
 ```

@@ -68,7 +68,7 @@ function createTables() {
                 signed_date DATE NOT NULL,
                 PRIMARY KEY(membershipid, hikeid),
                 FOREIGN KEY(membershipid) REFERENCES Member(membershipid),
-                FOREIGN KEY(hikeid) REFERENCES Hike(hikeid)
+                FOREIGN KEY(hikeid) REFERENCES Hike(hikeid) ON DELETE CASCADE
             );
              
             CREATE TABLE Supervises (
@@ -81,7 +81,8 @@ function createTables() {
             `
     
             con.query(sql, function(err, result) {
-                if (err) reject("X--> Tables creation failed...");
+                // if (err) reject("X--> Tables creation failed...");
+                if (err) reject(err);
                 else {
                     console.log("|--> Tables created...");
                     resolve();

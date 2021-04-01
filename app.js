@@ -6,6 +6,10 @@ var search = require("./search.js");
 var list = require("./listParticipants.js");
 var participation = require("./hikeParticipation.js");
 var mostActive = require("./mostActive.js");
+var cancelHike = require("./cancelHike.js");
+var updateInfo = require("./updateInfo.js");
+var mostBusy = require("./mostBusy.js");
+var fullParticipation = require("./fullParticipation.js");
 var yargs = require("yargs");
 
 var argv = yargs.argv;
@@ -59,6 +63,14 @@ switch (command) {
                 process.exit(1);
             });
         break;
+    case "update":
+        findTable.selectTable()
+            .then(data => updateInfo.update(data))
+            .catch(err => {
+                console.log(err);
+                process.exit(1);
+            });
+        break;
     case "list":
         list.listHikes()
             .then(() => list.participants())
@@ -83,5 +95,32 @@ switch (command) {
                 console.log(err);
                 process.exit(1);
             });
+        break;
+    case "topWorker":
+        mostBusy.topWorker()
+            .then(data => serveHtml(data))
+            .catch(err => {
+                console.log(err);
+                process.exit(1);
+            });
+        break;
+    case "allMembersJoined":
+        fullParticipation.allSigned()
+            .then(data => serveHtml(data))
+            .catch(err => {
+                console.log(err);
+                process.exit(1);
+            });
+        break;
+    case "cancelHike":
+        list.listHikes()
+            .then(() => cancelHike.cancelHike())
+            .catch(err => {
+                console.log(err);
+                process.exit(1);
+            });
+        break;
+    default:
+        console.log("Invalid option...");
         break;
 }
