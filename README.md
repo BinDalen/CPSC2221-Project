@@ -74,6 +74,12 @@ This would drop the database of the application. Once that is completed you coul
 
 ---
 
+## Project ERD
+
+![erd image](ERD.svg)
+
+---
+
 ## SQL queries used
 
 Creating the database:
