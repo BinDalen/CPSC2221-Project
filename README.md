@@ -1,4 +1,4 @@
-# CPSC2221-Project
+# Bobotron-14: Node.js + MySQL CLI Application
 
 ## Description
 
